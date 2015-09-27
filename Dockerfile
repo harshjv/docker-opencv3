@@ -13,6 +13,7 @@ RUN apt-get update && \
            /tmp/* \
            /var/tmp/*
 
+RUN git clone https://github.com/Itseez/opencv_contrib.git
 RUN git clone https://github.com/Itseez/opencv.git
 RUN cd opencv
 RUN mkdir release
@@ -20,6 +21,7 @@ RUN cd release
 
 RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D CMAKE_INSTALL_PREFIX=/usr/local \
+          -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules
           -D INSTALL_C_EXAMPLES=ON \
           -D INSTALL_PYTHON_EXAMPLES=ON \
           -D BUILD_EXAMPLES=ON \
