@@ -20,11 +20,10 @@ RUN cd release
 
 RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D CMAKE_INSTALL_PREFIX=/usr/local \
-          -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules
+          -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
           -D INSTALL_C_EXAMPLES=ON \
           -D INSTALL_PYTHON_EXAMPLES=ON \
           -D BUILD_EXAMPLES=ON \
-          -D WITH_QT=ON \
           -D WITH_OPENGL=ON \
           -D WITH_V4L=ON \
           -D WITH_XINE=ON \
