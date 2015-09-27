@@ -14,7 +14,7 @@ RUN apt-get update && \
            /var/tmp/*
 
 RUN git clone https://github.com/Itseez/opencv.git
-RUN opencv
+RUN cd opencv
 RUN mkdir release
 RUN cd release
 
