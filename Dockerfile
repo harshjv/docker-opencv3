@@ -13,12 +13,13 @@ RUN apt-get update && \
            /tmp/* \
            /var/tmp/*
 
-RUN git clone https://github.com/Itseez/opencv_contrib.git && cd opencv_contrib && git checkout 3.0.0 && cd ..
-RUN git clone https://github.com/Itseez/opencv.git && cd opencv && git checkout 3.0.0
-RUN mkdir release
-RUN cd release
+RUN mkdir ~/opencv
 
-RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
+RUN cd ~/opencv && git clone https://github.com/Itseez/opencv_contrib.git && cd opencv_contrib && git checkout 3.0.0
+RUN cd ~/opencv && git clone https://github.com/Itseez/opencv.git && cd opencv && git checkout 3.0.0
+
+RUN cd ~/opencv/opencv && mkdir release && cd release && \
+          cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D CMAKE_INSTALL_PREFIX=/usr/local \
           -D OPENCV_EXTRA_MODULES_PATH=../../opencv_contrib/modules \
           -D INSTALL_C_EXAMPLES=ON \
@@ -29,4 +30,4 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D WITH_XINE=ON \
           -D WITH_TBB=ON ..
 
-RUN make -j $(nproc) && make install
+RUN cd ~/opencv/opencv/release && make -j $(nproc) && make install
