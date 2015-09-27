@@ -30,4 +30,4 @@ RUN cmake -D CMAKE_BUILD_TYPE=RELEASE \
           -D WITH_XINE=ON \
           -D WITH_TBB=ON ..
 
-RUN make && make install
+RUN make -j $(nproc) && make install
